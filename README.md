@@ -1,6 +1,6 @@
 # After Library
 
-Site que reúne uma coleção de sets de msucia eletronica para o usuário ouvir e favoritar.
+Site que reúne uma coleção de sets de música eletrônica para o usuário ouvir e favoritar.
 
 # Esse projeto ainda está em andamento....
 
