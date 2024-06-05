@@ -1,3 +1,11 @@
+# After Library
+
+Site que reúne uma coleção de sets de msucia eletronica para o usuário ouvir e favoritar.
+
+# Esse projeto ainda está em andamento....
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
