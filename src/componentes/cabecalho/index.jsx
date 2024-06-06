@@ -33,7 +33,7 @@ const Cabecalho = () => {
                 <GiBurningEye size={30}/>
             </DivTitulo>
             <DivLinks>
-                <a>Home</a>
+                <Link to="/">Home</Link>
                 <Link to="./favorito">Favoritos</Link>
                 <a>Player</a>
             </DivLinks>
