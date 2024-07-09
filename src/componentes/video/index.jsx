@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
-import { useVideoFavoritoContext } from "../../context/videosContext";
+import { VideosContext, useVideoFavoritoContext } from "../../context/videosContext";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 const DivContainer = styled.div`
     background-color: #DA0037;
@@ -22,6 +24,9 @@ const Iframe = styled.iframe`
 const H2 = styled.h2`
     margin-bottom: 10px;
     font-size: 25px;
+    &:hover {
+        color: blue;
+    }
 `
 
 const Botao = styled.button`
@@ -33,15 +38,22 @@ const Botao = styled.button`
 
 const Video = ({ video }) => {
     const { favoritos, adicionaVideoFavorito } = useVideoFavoritoContext();
+    const { setVideoPlayer } = useContext(VideosContext);
     const ehFavorito = favoritos.some((favorito) => favorito.id === video.id);
-    const icone = !ehFavorito ? 
-        <IoHeartOutline size={40}/> : 
-        <IoHeartSharp size={40}/>;
+    const icone = !ehFavorito ?
+        <IoHeartOutline size={40} /> :
+        <IoHeartSharp size={40} />;
 
     return (
         <DivContainer>
-            <Iframe src={video.url} allowFullScreen></Iframe>
-            <H2>{video.titulo}</H2>
+            <Link 
+                to={`/${video.id}`} 
+                style={{ textDecoration: 'none', color: 'inherit'}}
+                onClick={() => setVideoPlayer(video)}
+            >
+                <Iframe src={video.url} allowFullScreen></Iframe>
+                <H2>{video.titulo}</H2>
+            </Link>
             <Botao onClick={() => adicionaVideoFavorito(video)}>{icone}</Botao>
         </DivContainer>
     )

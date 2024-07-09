@@ -33,12 +33,12 @@ const Botao = styled.button`
     font-size: 16px;
 `
 
-const BarraDePesquisa = () => {
+const BarraDePesquisa = ({ listaDePesquisa, funcaoDePesquisa}) => {
     const [ videoBuscado, setVideoBuscado ] = useState('');
-    const { setVideos, listaDeVideos } = useContext(VideosContext)
+    
 
         useEffect(() => {
-            setVideos(listaDeVideos.filter(video => 
+            funcaoDePesquisa(listaDePesquisa.filter(video => 
                 video.titulo.toLowerCase().includes(videoBuscado.toLowerCase())
             ))
         }, [videoBuscado])

@@ -10,6 +10,11 @@ const SectionBanner = styled.section`
   background-position: center;
   background-repeat: no-repeat;
   flex-wrap: wrap;
+  padding: 50px 120px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  box-sizing: border-box;
 `
 
 const animacao = keyframes`
@@ -24,9 +29,6 @@ const animacao = keyframes`
 `
 
 const DivConteudoBanner = styled.div`
-  position: absolute;
-  top: 17%;
-  right: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;

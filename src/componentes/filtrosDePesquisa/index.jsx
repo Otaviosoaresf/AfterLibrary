@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import BarraDePesquisa from "../barraDePesquisa";
 import Tags from "../tags";
+import { useContext } from "react";
+import { VideosContext } from "../../context/videosContext";
 
 const Section = styled.section`
     display: flex;
@@ -12,9 +14,10 @@ const Section = styled.section`
 
 
 const FiltrosDePesquisa = () => {
+    const { setVideos, listaDeVideos } = useContext(VideosContext)
     return(
         <Section>
-            <BarraDePesquisa />
+            <BarraDePesquisa listaDePesquisa={listaDeVideos} funcaoDePesquisa={setVideos} />
             <Tags />
         </Section>
     )

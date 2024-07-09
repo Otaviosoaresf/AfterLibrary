@@ -6,6 +6,7 @@ export const VideosContext = createContext();
 export const VideosProvider = ({ children }) => {
     const [ videos, setVideos ] = useState(listaDeVideos);
     const [ favoritos, setFavoritos ] = useState([]);
+    const [ videoPlayer, setVideoPlayer ] = useState();
 
 
     return(
@@ -15,7 +16,9 @@ export const VideosProvider = ({ children }) => {
                 setVideos,
                 listaDeVideos,
                 favoritos,
-                setFavoritos
+                setFavoritos,
+                videoPlayer,
+                setVideoPlayer
             }
         }>
             {children}

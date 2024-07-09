@@ -22,7 +22,14 @@ const DivLinks = styled.nav`
     display: flex;
     gap: 10px;
 `
+const LinkCustomizado = styled(Link)`
+    text-decoration: none;
+    color: inherit;
 
+    &:hover {
+        color: blue;
+    }
+`
 
 const Cabecalho = () => {
     return (
@@ -30,12 +37,11 @@ const Cabecalho = () => {
             <DivTitulo>
                 <h1>AFTER</h1>
                 <p>Library</p>
-                <GiBurningEye size={30}/>
+                <GiBurningEye size={30} />
             </DivTitulo>
             <DivLinks>
-                <Link to="/">Home</Link>
-                <Link to="./favorito">Favoritos</Link>
-                <a>Player</a>
+                <LinkCustomizado to="/">Home</LinkCustomizado>
+                <LinkCustomizado to="favorito">Favoritos</LinkCustomizado>
             </DivLinks>
         </ContainerCabecalho>
     )
