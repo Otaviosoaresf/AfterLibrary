@@ -4,6 +4,7 @@ import { EstilosGlobais } from "./EstilosGlobais";
 import Favorito from "./pages/Favorito";
 import PaginaBase from "./pages/PaginaBase";
 import Player from "./pages/Player";
+import NaoEncontrada from "./pages/NaoEncontrada";
 
 const AppRoutes = () => {
     return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
                     <Route index element={<Home />}></Route>
                     <Route path="favorito" element={<Favorito />}></Route>
                     <Route path=":id" element={<Player />}></Route>
+                    <Route path="*" element={<NaoEncontrada />}></Route>
                 </Route>
             </Routes>
         </BrowserRouter>

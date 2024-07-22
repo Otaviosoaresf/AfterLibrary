@@ -24,7 +24,7 @@ export const VideosProvider = ({ children }) => {
                 setPaginaAtual,
                 videosSelecionados,
                 indexInicial,
-                videosPorPagina
+                videosPorPagina,
             }
         }>
             {children}

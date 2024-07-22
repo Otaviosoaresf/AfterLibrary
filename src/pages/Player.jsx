@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import bannerPlayer from '../assets/banner-3.jpg';
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { VideosContext } from "../context/videosContext";
 import { useParams } from "react-router-dom";
+import NaoEncontrada from "./NaoEncontrada";
 
 const SectionPlayer = styled.section`
     width: 100%;
@@ -11,7 +12,7 @@ const SectionPlayer = styled.section`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 50px 120px;
+    padding: 50px 140px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,9 +28,12 @@ const IframePlayer = styled.iframe`
 const Player = () => {
     const { videos } = useContext(VideosContext);
     const parametros = useParams();
+    const videoPlayer = videos.find(video => video.id === Number(parametros.id));
 
-    const videoPlayer = videos.find(video => video.id === Number(parametros.id))
-
+    if(!videoPlayer) {
+        return <NaoEncontrada />
+    }
+    
     return (
         <>
             <SectionPlayer>

@@ -51,7 +51,6 @@ const Botao = styled.button`
 
 const Video = ({ video }) => {
     const { favoritos, adicionaVideoFavorito } = useVideoFavoritoContext();
-    const { setVideoPlayer } = useContext(VideosContext);
     const ehFavorito = favoritos.some((favorito) => favorito.id === video.id);
     const icone = !ehFavorito ?
         <IoHeartOutline size={40} /> :
@@ -62,7 +61,6 @@ const Video = ({ video }) => {
             <Link 
                 to={`/${video.id}`} 
                 style={{ textDecoration: 'none', color: 'inherit'}}
-                onClick={() => setVideoPlayer(video)}
             >
                 <Iframe src={video.url} allowFullScreen></Iframe>
                 <H2>{video.titulo}</H2>
