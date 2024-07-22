@@ -4,11 +4,13 @@ import { VideosContext } from "../context/videosContext";
 import Video from "../componentes/video";
 import Banner2 from "../assets/banner-2.jpg";
 import BarraDePesquisa from "../componentes/barraDePesquisa";
+import MudaPaginaDeVideos from "../componentes/mudaPaginaDeVideos";
 
 const FavoritoContainer = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 60px;
 `
 
 const DivTituloPesquisa = styled.div`
@@ -41,15 +43,20 @@ const Container = styled.section`
     gap: 30px;
     padding: 10px;
     margin-top: 30px;
-    margin-bottom: 170px;
+    margin-bottom: 60px;
 `
 
 const Favorito = () => {
-    const { favoritos } = useContext(VideosContext);
+    const { favoritos, indexInicial, videosPorPagina, setPaginaAtual } = useContext(VideosContext);
     const [ favoritosPesquisa, setFavoritosPesquisa ] = useState(favoritos)
+    const videosFavoritosSelecionados = favoritosPesquisa.slice(
+        indexInicial, indexInicial + videosPorPagina
+    )
+
 
     useEffect(() => {
         setFavoritosPesquisa([...favoritos])
+        setPaginaAtual(1)
     }, [favoritos])
     
     return (
@@ -59,10 +66,11 @@ const Favorito = () => {
                 <BarraDePesquisa listaDePesquisa={favoritos} funcaoDePesquisa={setFavoritosPesquisa} />
             </DivTituloPesquisa>
             <Container>
-                {favoritosPesquisa.map(favorito =>
+                {videosFavoritosSelecionados.map(favorito =>
                     <Video key={favorito.id} video={favorito} />
                 )}
             </Container>
+            <MudaPaginaDeVideos listaDeVideos={favoritosPesquisa} />
         </FavoritoContainer>
     )
 }

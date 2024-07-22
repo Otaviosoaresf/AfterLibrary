@@ -33,7 +33,7 @@ const DivConteudoBanner = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: ${animacao} 4s ease-in-out;
+  animation: ${animacao} 3s ease-in-out;
 `
 const DivParagrafoTitulo = styled.div`
   border: solid 1px #DA0037;

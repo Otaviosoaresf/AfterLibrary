@@ -33,5 +33,47 @@
         "url": "https://www.youtube.com/embed/GyfW1_EDKK0",
         "ano": "2024",
         "categoriaId": 5
+    },
+    {
+        "id": 6,
+        "titulo": "Cloonee - Live at The Brooklyn Mirage 2024",
+        "url": "https://www.youtube.com/embed/inNpBt8AJ54",
+        "ano": "2024",
+        "categoriaId": 1
+    },
+    {
+        "id": 7,
+        "titulo": "Eli Brown @ EDC Las Vegas 2024 | (stereoBLOOM)",
+        "url": "https://www.youtube.com/embed/NF5BTkhu30o",
+        "ano": "2024",
+        "categoriaId": 4
+    },
+    {
+        "id": 8,
+        "titulo": "Vegas @ Universo Paralello Festival #17 2024 FULL VIDEO",
+        "url": "https://www.youtube.com/embed/91MYtYAHKLs",
+        "ano": "2024",
+        "categoriaId": 3
+    },
+    {
+        "id": 9,
+        "titulo": "Astrix @ Boom Festival 2023 (Full Set Movie)",
+        "url": "https://www.youtube.com/embed/kdVElRhr4q4",
+        "ano": "2023",
+        "categoriaId": 2
+    },
+    {
+        "id": 10,
+        "titulo": "Korolova DJ set ‪@sotrackboa‬ 2024 | São Paulo | ‪@beatport‬ live",
+        "url": "https://www.youtube.com/embed/c7Gzu83cLQU",
+        "ano": "2024",
+        "categoriaId": 5
+    },
+    {
+        "id": 11,
+        "titulo": "Cloonee - Live at Expo Park, Los Angeles",
+        "url": "https://www.youtube.com/embed/xlV2tWRM_Tk",
+        "ano": "2024",
+        "categoriaId": 1
     }
 ]

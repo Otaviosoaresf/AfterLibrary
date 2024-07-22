@@ -1,10 +1,23 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 import { VideosContext, useVideoFavoritoContext } from "../../context/videosContext";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 
+const animacao = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`;
+
+
 const DivContainer = styled.div`
+    animation: ${animacao} 0.5s ease-out;
     background-color: #DA0037;
     width: 30%;
     height: auto;
@@ -25,7 +38,7 @@ const H2 = styled.h2`
     margin-bottom: 10px;
     font-size: 25px;
     &:hover {
-        color: blue;
+        color: black;
     }
 `
 

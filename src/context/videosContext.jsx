@@ -6,8 +6,11 @@ export const VideosContext = createContext();
 export const VideosProvider = ({ children }) => {
     const [ videos, setVideos ] = useState(listaDeVideos);
     const [ favoritos, setFavoritos ] = useState([]);
-    const [ videoPlayer, setVideoPlayer ] = useState();
+    const [ paginaAtual, setPaginaAtual ] = useState(1);
 
+    const videosPorPagina = 6;
+    const indexInicial = (paginaAtual - 1) * videosPorPagina;
+    const videosSelecionados = videos.slice(indexInicial, indexInicial + videosPorPagina)
 
     return(
         <VideosContext.Provider value={
@@ -17,8 +20,11 @@ export const VideosProvider = ({ children }) => {
                 listaDeVideos,
                 favoritos,
                 setFavoritos,
-                videoPlayer,
-                setVideoPlayer
+                paginaAtual,
+                setPaginaAtual,
+                videosSelecionados,
+                indexInicial,
+                videosPorPagina
             }
         }>
             {children}

@@ -35,7 +35,7 @@ const Botao = styled.button`
 
 const BarraDePesquisa = ({ listaDePesquisa, funcaoDePesquisa}) => {
     const [ videoBuscado, setVideoBuscado ] = useState('');
-    
+    const { setPaginaAtual } = useContext(VideosContext)
 
         useEffect(() => {
             funcaoDePesquisa(listaDePesquisa.filter(video => 
@@ -49,7 +49,10 @@ const BarraDePesquisa = ({ listaDePesquisa, funcaoDePesquisa}) => {
                 type="text"
                 placeholder="Procurar sets..."
                 value={videoBuscado}
-                onChange={(evento) => setVideoBuscado(evento.target.value)}
+                onChange={(evento) => {
+                    setPaginaAtual(1)
+                    setVideoBuscado(evento.target.value)
+                }}
             />
             <Botao>
                 <IoSearchSharp />

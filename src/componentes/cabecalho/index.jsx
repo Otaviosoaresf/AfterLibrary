@@ -27,7 +27,7 @@ const LinkCustomizado = styled(Link)`
     color: inherit;
 
     &:hover {
-        color: blue;
+        color: black;
     }
 `
 

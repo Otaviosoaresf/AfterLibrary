@@ -34,9 +34,10 @@ const Tag = styled.button`
 `
 
 const Tags = () => {
-    const { setVideos, listaDeVideos } = useContext(VideosContext)
+    const { setVideos, listaDeVideos, setPaginaAtual } = useContext(VideosContext)
 
     const FiltrarPorTag = (id) => {
+        setPaginaAtual(1)
         setVideos(id === 0 ? listaDeVideos :
          listaDeVideos.filter(video => 
             video.categoriaId === id

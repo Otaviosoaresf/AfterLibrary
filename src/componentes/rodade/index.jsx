@@ -36,7 +36,7 @@ const ALink = styled.a`
     color: inherit;
 
     :hover {
-        color: blue;
+        color: black;
     }
 `
 
