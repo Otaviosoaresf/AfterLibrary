@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { GiBurningEye } from "react-icons/gi"
+import media from "../../breakpoints";
+
+const Icone = styled(GiBurningEye)`
+    width: 30px;
+    height: 30px;
+
+    @media ${media.mobile} {
+        width: 20px;
+        height: 20px;
+    }
+`
 
 const ContainerCabecalho = styled.div`
     display: flex;
@@ -10,12 +21,36 @@ const ContainerCabecalho = styled.div`
     align-items: center;
     justify-content: space-between;
     color: #EDEDED;
+    max-width: 100%;
+
+    @media ${media.mobile} {
+        justify-content: center;
+        padding: 10px;
+        height: 6vh;
+        gap: 30px;
+    }
 `
 
 const DivTitulo = styled.div`
     display: flex;
     gap: 3px;
     align-items: baseline;
+`
+
+const TituloCabecalho = styled.h1`
+    font-size: 32px;
+
+    @media ${media.mobile} {
+        font-size: 22px;
+    }
+`
+
+const PCabecalho = styled.p`
+    font-size: 16px;
+
+    @media ${media.mobile} {
+        font-size: 11px;
+    }
 `
 
 const DivLinks = styled.nav`
@@ -29,15 +64,19 @@ const LinkCustomizado = styled(Link)`
     &:hover {
         color: black;
     }
+
+    @media ${media.mobile} {
+        font-size: 13px;
+    }
 `
 
 const Cabecalho = () => {
     return (
         <ContainerCabecalho>
             <DivTitulo>
-                <h1>AFTER</h1>
-                <p>Library</p>
-                <GiBurningEye size={30} />
+                <TituloCabecalho>AFTER</TituloCabecalho>
+                <PCabecalho>Library</PCabecalho>
+                <Icone />
             </DivTitulo>
             <DivLinks>
                 <LinkCustomizado to="/">Home</LinkCustomizado>

@@ -1,6 +1,8 @@
 import styled, { keyframes } from "styled-components"
 import bannerHome from "../../assets/banner.jpg";
 import imagemAdesiva from "../../assets/imgAdesivo.png";
+import media from '../../breakpoints';
+
 
 const SectionBanner = styled.section`
   width: 100%;
@@ -15,6 +17,12 @@ const SectionBanner = styled.section`
   justify-content: right;
   align-items: center;
   box-sizing: border-box;
+
+  @media ${media.mobile} {
+    justify-content: center;
+    padding: 20px 80px;
+    height: 60vh;
+  }
 `
 
 const animacao = keyframes`
@@ -46,21 +54,39 @@ const DivParagrafoTitulo = styled.div`
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 20px;
+
+  @media ${media.mobile} {
+    max-width: 365px;
+    padding: 10px;
+  }
 `
 
 const H1Banner = styled.h1`
   color: #DA0037;
   margin-bottom: 20px;
   font-size: 30px;
+
+  @media ${media.mobile} {
+    font-size: 20px;
+  }
 `
 
 const ParagrafoBanner = styled.p`
   color: #EDEDED;
+
+  @media ${media.mobile} {
+    font-size: 14px;
+  }
 `
 
 const ImgAdesiva = styled.img`
   width: 275px;
   height: 325px;
+
+  @media ${media.mobile} {
+    width: 210px;
+    height: 260px;
+  }
 `
 
 

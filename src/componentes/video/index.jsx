@@ -1,8 +1,8 @@
 import styled, { keyframes } from "styled-components";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
-import { VideosContext, useVideoFavoritoContext } from "../../context/videosContext";
+import { useVideoFavoritoContext } from "../../context/videosContext";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import media from "../../breakpoints";
 
 const animacao = keyframes`
     from {
@@ -28,17 +28,29 @@ const DivContainer = styled.div`
     border-radius: 15px;
     align-items: center;
     justify-content: space-between;
+
+    @media ${media.mobile} {
+        width: 80%;
+    }
 `
 
 const Iframe = styled.iframe`
     width: 100%;
     height: 30vh;
+
+    @media ${media.mobile} {
+        height: 15vh;
+    }
 `
 const H2 = styled.h2`
     margin-bottom: 10px;
     font-size: 25px;
     &:hover {
         color: black;
+    }
+
+    @media ${media.mobile} {
+        font-size: 18px;
     }
 `
 
