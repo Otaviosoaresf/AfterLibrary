@@ -26,7 +26,7 @@ const ContainerCabecalho = styled.div`
     @media ${media.mobile} {
         justify-content: center;
         padding: 10px;
-        height: 6vh;
+        height: 9vh;
         gap: 30px;
     }
 `

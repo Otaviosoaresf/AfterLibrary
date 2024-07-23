@@ -51,7 +51,7 @@ const Tag = styled.button`
     @media ${media.mobile} {
         font-size: 14px;
         width: 90px;
-        height: 40px;
+        height: 45px;
     }
 `
 
