@@ -38,8 +38,8 @@ Para apenas conhecer o site como ele é, clique no link do meu deploy da vercel:
 
 ## Contato
 
-Email: otvio2018@outlook.com
-Whatsapp: (11) 94675-6821
+- Email: otvio2018@outlook.com
+- Whatsapp: (11) 94675-6821
 
 
 
