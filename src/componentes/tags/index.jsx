@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import listaTags from '../../mocks/tags.json';
 import { useContext } from 'react';
 import { VideosContext } from '../../context/videosContext';
-import media from '../../breakpoints';
+import TamanhosDeTela from '../../breakpoints';
 
 const TagsContainer = styled.div`
     display: flex;
@@ -10,7 +10,7 @@ const TagsContainer = styled.div`
     gap: 30px;
     flex-wrap: wrap;
 
-    @media ${media.mobile} {
+    @media (max-width: ${TamanhosDeTela.monitor}) {
         flex-direction: column;
         justify-content: center;
         width: 100%;
@@ -21,7 +21,7 @@ const TagsTitulo = styled.h3`
     color: #EDEDED;
     padding: 5px;
 
-    @media ${media.mobile} {
+    @media (max-width: ${TamanhosDeTela.mobile}) {
         font-size: 20px;
     }
 `
@@ -48,7 +48,7 @@ const Tag = styled.button`
     height: 55px;
     
 
-    @media ${media.mobile} {
+    @media (max-width: ${TamanhosDeTela.mobile}) {
         font-size: 14px;
         width: 90px;
         height: 45px;

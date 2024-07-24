@@ -1,15 +1,20 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { GiBurningEye } from "react-icons/gi"
-import media from "../../breakpoints";
+import TamanhosDeTela from "../../breakpoints";
 
 const Icone = styled(GiBurningEye)`
     width: 30px;
     height: 30px;
 
-    @media ${media.mobile} {
+    @media (max-width: ${TamanhosDeTela.mobile}) {
         width: 20px;
         height: 20px;
+    }
+
+    @media (min-width: ${TamanhosDeTela.mobile}) and (max-width: ${TamanhosDeTela.tablet}) {
+        width: 25px;
+        height: 25px;
     }
 `
 
@@ -23,11 +28,16 @@ const ContainerCabecalho = styled.div`
     color: #EDEDED;
     max-width: 100%;
 
-    @media ${media.mobile} {
+    @media (max-width: ${TamanhosDeTela.mobile}) {
         justify-content: center;
         padding: 10px;
         height: 9vh;
         gap: 30px;
+    }
+
+    @media (min-width: ${TamanhosDeTela.mobile}) and (max-width: ${TamanhosDeTela.tablet}) {
+        padding: 10px 30px;
+        height: 10vh;
     }
 `
 
@@ -40,16 +50,24 @@ const DivTitulo = styled.div`
 const TituloCabecalho = styled.h1`
     font-size: 32px;
 
-    @media ${media.mobile} {
+    @media (max-width: ${TamanhosDeTela.mobile}) {
         font-size: 22px;
+    }
+
+    @media (min-width: ${TamanhosDeTela.mobile}) and (max-width: ${TamanhosDeTela.tablet}) {
+        font-size: 27px;
     }
 `
 
 const PCabecalho = styled.p`
     font-size: 16px;
 
-    @media ${media.mobile} {
+    @media (max-width: ${TamanhosDeTela.mobile}) {
         font-size: 11px;
+    }
+
+    @media (min-width: ${TamanhosDeTela.mobile}) and (max-width: ${TamanhosDeTela.tablet}) {
+        font-size: 13px;
     }
 `
 
@@ -65,7 +83,7 @@ const LinkCustomizado = styled(Link)`
         color: black;
     }
 
-    @media ${media.mobile} {
+    @media (max-width: ${TamanhosDeTela.mobile}) {
         font-size: 13px;
     }
 `

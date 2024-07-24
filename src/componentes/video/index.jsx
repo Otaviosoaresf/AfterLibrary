@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 import { useVideoFavoritoContext } from "../../context/videosContext";
 import { Link } from "react-router-dom";
-import media from "../../breakpoints";
+import TamanhosDeTela from "../../breakpoints";
 
 const animacao = keyframes`
     from {
@@ -29,17 +29,31 @@ const DivContainer = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    @media ${media.mobile} {
+    @media (max-width: ${TamanhosDeTela.mobile}) {
         width: 80%;
     }
+
+    @media (min-width: ${TamanhosDeTela.mobile}) and (max-width: ${TamanhosDeTela.tablet}) {
+        width: 65%;
+    }
+
+    @media (min-width: ${TamanhosDeTela.tablet}) and (max-width: ${TamanhosDeTela.notebook}) {
+        width: 45%
+    }
+
+    
 `
 
 const Iframe = styled.iframe`
     width: 100%;
     height: 30vh;
 
-    @media ${media.mobile} {
+    @media (max-width: ${TamanhosDeTela.mobile}) {
         height: 15vh;
+    }
+
+    @media (min-width: ${TamanhosDeTela.mobile}) and (max-width: ${TamanhosDeTela.tablet}) {
+        height: 20vh;
     }
 `
 const H2 = styled.h2`
@@ -49,8 +63,16 @@ const H2 = styled.h2`
         color: black;
     }
 
-    @media ${media.mobile} {
+    @media (max-width: ${TamanhosDeTela.mobile}) {
         font-size: 18px;
+    }
+
+    @media (min-width: ${TamanhosDeTela.mobile}) and (max-width: ${TamanhosDeTela.tablet}) {
+        font-size: 21px;
+    }
+
+    @media (min-width: ${TamanhosDeTela.tablet}) and (max-width: ${TamanhosDeTela.notebook}) {
+        font-size: 23px;
     }
 `
 

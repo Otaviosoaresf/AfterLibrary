@@ -1,12 +1,12 @@
 import styled, { keyframes } from "styled-components"
 import bannerHome from "../../assets/banner.jpg";
 import imagemAdesiva from "../../assets/imgAdesivo.png";
-import media from '../../breakpoints';
+import TamanhosDeTela from '../../breakpoints';
 
 
 const SectionBanner = styled.section`
   width: 100%;
-  height: 85vh;
+  height: 90vh;
   background-image: url(${bannerHome});
   background-size: cover;
   background-position: center;
@@ -18,10 +18,16 @@ const SectionBanner = styled.section`
   align-items: center;
   box-sizing: border-box;
 
-  @media ${media.mobile} {
+  @media (max-width: ${TamanhosDeTela.mobile}) {
     justify-content: center;
     padding: 20px 80px;
     height: 60vh;
+  }
+
+  @media (min-width: ${TamanhosDeTela.mobile}) and (max-width: ${TamanhosDeTela.notebook}) {
+    justify-content: center;
+    padding: 35px 100px;
+    height: 70vh;
   }
 `
 
@@ -55,7 +61,7 @@ const DivParagrafoTitulo = styled.div`
   margin-bottom: 20px;
   border-radius: 20px;
 
-  @media ${media.mobile} {
+  @media (max-width: ${TamanhosDeTela.mobile}) {
     max-width: 365px;
     padding: 10px;
   }
@@ -66,7 +72,7 @@ const H1Banner = styled.h1`
   margin-bottom: 20px;
   font-size: 30px;
 
-  @media ${media.mobile} {
+  @media (max-width: ${TamanhosDeTela.mobile}) {
     font-size: 20px;
   }
 `
@@ -74,18 +80,28 @@ const H1Banner = styled.h1`
 const ParagrafoBanner = styled.p`
   color: #EDEDED;
 
-  @media ${media.mobile} {
+  @media (max-width: ${TamanhosDeTela.mobile}) {
     font-size: 14px;
   }
 `
 
 const ImgAdesiva = styled.img`
-  width: 275px;
-  height: 325px;
+  width: 325px;
+  height: 375px;
 
-  @media ${media.mobile} {
+  @media (max-width: ${TamanhosDeTela.mobile}) {
     width: 210px;
     height: 260px;
+  }
+
+  @media (min-width: ${TamanhosDeTela.mobile}) and (max-width: ${TamanhosDeTela.tablet}) {
+    width: 245px;
+    height: 295px
+  }
+
+  @media (min-width: ${TamanhosDeTela.tablet}) and (max-width: ${TamanhosDeTela.monitor}) {
+    width: 275px;
+    height: 325px
   }
 `
 

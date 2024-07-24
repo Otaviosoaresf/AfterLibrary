@@ -3,7 +3,7 @@ import BarraDePesquisa from "../barraDePesquisa";
 import Tags from "../tags";
 import { useContext } from "react";
 import { VideosContext } from "../../context/videosContext";
-import media from "../../breakpoints";
+import TamanhosDeTela from "../../breakpoints";
 
 const Section = styled.section`
     display: flex;
@@ -12,7 +12,7 @@ const Section = styled.section`
     justify-content: space-between;
     flex-wrap: wrap;
 
-    @media ${media.mobile} {
+    @media (max-width: ${TamanhosDeTela.monitor}) {
         flex-direction: column-reverse;
         justify-content: center;
         gap: 30px;

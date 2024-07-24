@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { VideosContext } from "../context/videosContext";
 import { useParams } from "react-router-dom";
 import NaoEncontrada from "./NaoEncontrada";
+import TamanhosDeTela from '../breakpoints';
 
 const SectionPlayer = styled.section`
     width: 100%;
@@ -17,12 +18,28 @@ const SectionPlayer = styled.section`
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+
+    @media (max-width: ${TamanhosDeTela.notebook}) {
+        padding: 70px 5px;     
+    }
 `
 const IframePlayer = styled.iframe`
     width: 100%;
     height: 80vh;
     border: none;
     border-radius: 10px;
+
+    @media (max-width: ${TamanhosDeTela.mobile}) {
+        height: 50vh;
+    }
+
+    @media (min-width: ${TamanhosDeTela.mobile}) and (max-width: ${TamanhosDeTela.tablet}) {
+        height: 70vh;
+    }
+
+    @media (min-width: ${TamanhosDeTela.tablet}) and (max-width: ${TamanhosDeTela.notebook}) {
+        height: 85vh;
+    }
 `
 
 const Player = () => {

@@ -1,13 +1,9 @@
-const tamanhosDeTela = {
+const TamanhosDeTela = {
     mobile: '390px',
-    tablet: '500px',
-    notebook: '1024px'
+    tablet: '768px',
+    notebook: '1024px',
+    monitor: '1260px'
 }
 
-const media = {
-    mobile: `(max-width: ${tamanhosDeTela.mobile})`,
-    tablet: `(max-width: ${tamanhosDeTela.tablet})`,
-    notebook: `(max-width: ${tamanhosDeTela.notebook})`
-}
 
-export default media;
+export default TamanhosDeTela;
