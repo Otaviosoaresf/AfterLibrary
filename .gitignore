@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Ignorar arquivos .env no backend e frontend
+.env
+backend/.env

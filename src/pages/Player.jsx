@@ -45,7 +45,7 @@ const IframePlayer = styled.iframe`
 const Player = () => {
     const { videos } = useContext(VideosContext);
     const parametros = useParams();
-    const videoPlayer = videos.find(video => video.id === Number(parametros.id));
+    const videoPlayer = videos.find(video => video._id === parametros.id);
 
     if(!videoPlayer) {
         return <NaoEncontrada />

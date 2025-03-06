@@ -37,7 +37,7 @@ const ExibeVideos = () => {
     return (
         <ContainerComponente>
             <ContainerVideos>
-                {videosSelecionados.map(video => <Video key={video.id} video={video} />)}
+                {videosSelecionados.map(video => <Video key={video._id} video={video} />)}
             </ContainerVideos>
             <MudaPaginaDeVideos listaDeVideos={videos} />
         </ContainerComponente>

@@ -21,10 +21,10 @@ const Section = styled.section`
 
 
 const FiltrosDePesquisa = () => {
-    const { setVideos, listaDeVideos } = useContext(VideosContext)
+    const { setVideos, videos } = useContext(VideosContext)
     return(
         <Section>
-            <BarraDePesquisa listaDePesquisa={listaDeVideos} funcaoDePesquisa={setVideos} />
+            <BarraDePesquisa listaDePesquisa={videos} funcaoDePesquisa={setVideos} />
             <Tags />
         </Section>
     )

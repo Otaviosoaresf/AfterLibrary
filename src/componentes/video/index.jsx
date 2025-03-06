@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
-import { useVideoFavoritoContext } from "../../context/videosContext";
+import { useContext } from "react";
+import { VideosContext } from "../../context/videosContext";
 import { Link } from "react-router-dom";
 import TamanhosDeTela from "../../breakpoints";
 
@@ -14,7 +15,6 @@ const animacao = keyframes`
         transform: translateY(0);
     }
 `;
-
 
 const DivContainer = styled.div`
     animation: ${animacao} 0.5s ease-out;
@@ -38,11 +38,9 @@ const DivContainer = styled.div`
     }
 
     @media (min-width: ${TamanhosDeTela.tablet}) and (max-width: ${TamanhosDeTela.notebook}) {
-        width: 45%
+        width: 45%;
     }
-
-    
-`
+`;
 
 const Iframe = styled.iframe`
     width: 100%;
@@ -55,7 +53,8 @@ const Iframe = styled.iframe`
     @media (min-width: ${TamanhosDeTela.mobile}) and (max-width: ${TamanhosDeTela.tablet}) {
         height: 20vh;
     }
-`
+`;
+
 const H2 = styled.h2`
     margin-bottom: 10px;
     font-size: 25px;
@@ -74,34 +73,33 @@ const H2 = styled.h2`
     @media (min-width: ${TamanhosDeTela.tablet}) and (max-width: ${TamanhosDeTela.notebook}) {
         font-size: 23px;
     }
-`
+`;
 
 const Botao = styled.button`
     background-color: #DA0037;
     border: none;
     text-decoration: none;
     cursor: pointer;
-`
+`;
 
 const Video = ({ video }) => {
-    const { favoritos, adicionaVideoFavorito } = useVideoFavoritoContext();
-    const ehFavorito = favoritos.some((favorito) => favorito.id === video.id);
-    const icone = !ehFavorito ?
-        <IoHeartOutline size={40} /> :
-        <IoHeartSharp size={40} />;
+    const { favoritos, adicionarOuRemoverFavorito } = useContext(VideosContext);
+    
+    const ehFavorito = favoritos.some(fav => fav._id === video._id); // 🔥 Corrigido para usar _id
+    const icone = ehFavorito ? <IoHeartSharp size={40} color="black" /> : <IoHeartOutline size={40} color="gray" />;
 
     return (
         <DivContainer>
             <Link 
-                to={`/${video.id}`} 
+                to={`/${video._id}`} 
                 style={{ textDecoration: 'none', color: 'inherit'}}
             >
                 <Iframe src={video.url} allowFullScreen></Iframe>
                 <H2>{video.titulo}</H2>
             </Link>
-            <Botao onClick={() => adicionaVideoFavorito(video)}>{icone}</Botao>
+            <Botao onClick={() => adicionarOuRemoverFavorito(video)}>{icone}</Botao>
         </DivContainer>
-    )
-}
+    );
+};
 
 export default Video;

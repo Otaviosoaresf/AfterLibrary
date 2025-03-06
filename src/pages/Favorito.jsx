@@ -48,17 +48,17 @@ const Container = styled.section`
 
 const Favorito = () => {
     const { favoritos, indexInicial, videosPorPagina, setPaginaAtual } = useContext(VideosContext);
-    const [ favoritosPesquisa, setFavoritosPesquisa ] = useState(favoritos)
+    const [favoritosPesquisa, setFavoritosPesquisa] = useState(favoritos);
+
     const videosFavoritosSelecionados = favoritosPesquisa.slice(
         indexInicial, indexInicial + videosPorPagina
-    )
-
+    );
 
     useEffect(() => {
-        setFavoritosPesquisa([...favoritos])
-        setPaginaAtual(1)
-    }, [favoritos])
-    
+        setFavoritosPesquisa([...favoritos]);
+        setPaginaAtual(1);
+    }, [favoritos]);
+
     return (
         <FavoritoContainer>
             <DivTituloPesquisa>
@@ -67,12 +67,12 @@ const Favorito = () => {
             </DivTituloPesquisa>
             <Container>
                 {videosFavoritosSelecionados.map(favorito =>
-                    <Video key={favorito.id} video={favorito} />
+                    <Video key={favorito._id} video={favorito} />
                 )}
             </Container>
             <MudaPaginaDeVideos listaDeVideos={favoritosPesquisa} />
         </FavoritoContainer>
-    )
-}
+    );
+};
 
 export default Favorito;

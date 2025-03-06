@@ -1,23 +1,59 @@
-import { createContext, useContext, useState } from "react";
-import listaDeVideos from "../mocks/videos.json";
+import { createContext, useContext, useState, useEffect } from "react";
+import api from "../services/api";
 
 export const VideosContext = createContext();
 
 export const VideosProvider = ({ children }) => {
-    const [ videos, setVideos ] = useState(listaDeVideos);
-    const [ favoritos, setFavoritos ] = useState([]);
-    const [ paginaAtual, setPaginaAtual ] = useState(1);
+    const [videos, setVideos] = useState([]);
+    const [todosOsVideos, setTodosOsVideos] = useState([]);
+    const [categorias, setCategorias] = useState([]);
+    const [favoritos, setFavoritos] = useState([]);
+    const [paginaAtual, setPaginaAtual] = useState(1);
 
     const videosPorPagina = 6;
     const indexInicial = (paginaAtual - 1) * videosPorPagina;
-    const videosSelecionados = videos.slice(indexInicial, indexInicial + videosPorPagina)
+    const videosSelecionados = videos.slice(indexInicial, indexInicial + videosPorPagina);
 
-    return(
-        <VideosContext.Provider value={
-            {
+    const fetchVideos = async () => {
+        try {
+            const response = await api.get("/videos");
+            setVideos(response.data);
+            setTodosOsVideos(response.data);
+        } catch (error) {
+            console.error("Erro ao buscar vídeos:", error);
+        }
+    };
+
+    const fetchCategorias = async () => {
+        try {
+            const response = await api.get("/categorias");
+            setCategorias(response.data);
+        } catch (error) {
+            console.error("Erro ao buscar categorias:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchVideos();
+        fetchCategorias();
+    }, []);
+
+    const adicionarOuRemoverFavorito = (video) => {
+        setFavoritos((favoritosAnteriores) => {
+            const jaEstaNosFavoritos = favoritosAnteriores.some(fav => fav._id === video._id);
+            return jaEstaNosFavoritos
+                ? favoritosAnteriores.filter(fav => fav._id !== video._id)
+                : [...favoritosAnteriores, video];
+        });
+    };
+
+    return (
+        <VideosContext.Provider
+            value={{
                 videos,
                 setVideos,
-                listaDeVideos,
+                todosOsVideos,
+                categorias,
                 favoritos,
                 setFavoritos,
                 paginaAtual,
@@ -25,32 +61,10 @@ export const VideosProvider = ({ children }) => {
                 videosSelecionados,
                 indexInicial,
                 videosPorPagina,
-            }
-        }>
+                adicionarOuRemoverFavorito, // 🔥 Função corrigida agora disponível no contexto
+            }}
+        >
             {children}
         </VideosContext.Provider>
-    )
-}
-
-export const useVideoFavoritoContext = () => {
-    const { favoritos, setFavoritos } = useContext(VideosContext)
-    
-    const adicionaVideoFavorito = (novoVideo) => {
-        const videoRepetido = favoritos.some(item => item.id === novoVideo.id);
-
-        let novaListaDeVideos = [...favoritos];
-
-        if(!videoRepetido) {
-            novaListaDeVideos.push(novoVideo);
-            return setFavoritos(novaListaDeVideos);
-        }
-
-        novaListaDeVideos.splice(novaListaDeVideos.indexOf(novoVideo), 1)
-        return setFavoritos(novaListaDeVideos)
-    }
-
-    return{
-        favoritos,
-        adicionaVideoFavorito
-    }
-}
+    );
+};

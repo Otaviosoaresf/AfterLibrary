@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { VideosContext } from "../../context/videosContext";
 import styled from "styled-components";
 import { IoSearchSharp } from "react-icons/io5";
@@ -6,7 +6,7 @@ import { IoSearchSharp } from "react-icons/io5";
 const ContainerBarra = styled.div`
     display: flex;
     align-items: center;
-`
+`;
 
 const InputBarraDePesquisa = styled.input`
     padding: 10px;
@@ -21,7 +21,8 @@ const InputBarraDePesquisa = styled.input`
         border-color: #007BFF;
         outline: none;
     }
-`
+`;
+
 const Botao = styled.button`
     padding: 9px 20px;
     border: 1px solid #DA0037;
@@ -31,18 +32,24 @@ const Botao = styled.button`
     color: #EDEDED;
     cursor: pointer;
     font-size: 16px;
-`
+`;
 
-const BarraDePesquisa = ({ listaDePesquisa, funcaoDePesquisa}) => {
-    const [ videoBuscado, setVideoBuscado ] = useState('');
-    const { setPaginaAtual } = useContext(VideosContext)
+const BarraDePesquisa = () => {
+    const { setPaginaAtual, setVideos, todosOsVideos } = useContext(VideosContext);
+    const [videoBuscado, setVideoBuscado] = useState("");
 
-        useEffect(() => {
-            funcaoDePesquisa(listaDePesquisa.filter(video => 
-                video.titulo.toLowerCase().includes(videoBuscado.toLowerCase())
-            ))
-        }, [videoBuscado])
-    
+    useEffect(() => {
+        if (!todosOsVideos.length) return;
+
+        setVideos(
+            videoBuscado === ""
+                ? todosOsVideos
+                : todosOsVideos.filter(video =>
+                    video.titulo.toLowerCase().includes(videoBuscado.toLowerCase())
+                )
+        );
+    }, [videoBuscado, todosOsVideos, setVideos]);
+
     return (
         <ContainerBarra>
             <InputBarraDePesquisa
@@ -50,15 +57,15 @@ const BarraDePesquisa = ({ listaDePesquisa, funcaoDePesquisa}) => {
                 placeholder="Procurar sets..."
                 value={videoBuscado}
                 onChange={(evento) => {
-                    setPaginaAtual(1)
-                    setVideoBuscado(evento.target.value)
+                    setPaginaAtual(1);
+                    setVideoBuscado(evento.target.value);
                 }}
             />
             <Botao>
                 <IoSearchSharp />
             </Botao>
         </ContainerBarra>
-    )
-}
+    );
+};
 
 export default BarraDePesquisa;

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import listaTags from '../../mocks/tags.json';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { VideosContext } from '../../context/videosContext';
 import TamanhosDeTela from '../../breakpoints';
 
@@ -56,13 +55,21 @@ const Tag = styled.button`
 `
 
 const Tags = () => {
-    const { setVideos, listaDeVideos, setPaginaAtual } = useContext(VideosContext)
+    const { setVideos, videos, setPaginaAtual, categorias } = useContext(VideosContext)
+    const [ todosOsVideos, setTodosOsVideos ] = useState([])
 
-    const FiltrarPorTag = (id) => {
+    useEffect(() => {
+        if (videos.length > 0 && todosOsVideos.length === 0) {
+            setTodosOsVideos(videos);
+        }
+    }, [videos])
+
+    const FiltrarPorTag = (tituloCategoria) => {
+        console.log(tituloCategoria)
         setPaginaAtual(1)
-        setVideos(id === 0 ? listaDeVideos :
-         listaDeVideos.filter(video => 
-            video.categoriaId === id
+        setVideos(tituloCategoria === "Todas" ? todosOsVideos :
+         todosOsVideos.filter(video => 
+            video.categoriaId.titulo === tituloCategoria
         ))
     }
 
@@ -70,10 +77,10 @@ const Tags = () => {
         <TagsContainer>
             <TagsTitulo>Categorias</TagsTitulo>
             <DivTags>
-                {listaTags.map(tag => 
+                {categorias.map(tag => 
                     <Tag 
                         key={tag.id}
-                        onClick={() => FiltrarPorTag(tag.id)}
+                        onClick={() => FiltrarPorTag(tag.titulo)}
                     >
                         {tag.titulo}
                     </Tag>
